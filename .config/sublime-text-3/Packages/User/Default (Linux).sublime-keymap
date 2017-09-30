@@ -1,0 +1,48 @@
+[
+    {
+        "keys": ["ctrl+shift+c"],
+        "command": "exec",
+        "args": {"kill": true},
+    },
+    {
+        "keys": ["alt+shift+7"],
+        "caption": "2 cols (full - 2)",
+        "command": "set_layout",
+        "args": {
+            "cols": [0.0, 0.8, 1.0],
+            "rows": [0.0, 0.6, 1.0],
+            "cells": [
+                [0, 0, 1, 2],
+                [1, 0, 2, 1],
+                [1, 1, 2, 2],
+            ],
+        },
+    },
+    {
+        "keys": ["ctrl+k", "ctrl+m"],
+        "command": "toggle_minimap",
+    },
+    {
+        "keys": ["f4"],
+        "command": "show_panel",
+        "args": {
+            "panel": "output.exec",
+        },
+    },
+    {
+        "keys": ["ctrl+alt+e"],
+        "command": "anaconda_auto_format",
+    },
+    {
+        "keys": ["ctrl+k", "ctrl+t"],
+        "command": "toggle_setting",
+        "args": {
+            "setting": "word_wrap"
+        },
+    },
+    {
+        "command": "anaconda_doc", "keys": ["ctrl+q"], "context": [
+            {"key": "selector", "operator": "equal", "operand": "source.python"}
+        ]
+    },
+]

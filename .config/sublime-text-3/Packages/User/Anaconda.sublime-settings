@@ -1,0 +1,20 @@
+{
+    "autoformat_ignore":
+    [
+        "W191",
+        "E501",
+    ],
+
+    "pep8_ignore":
+    [
+        "W191",
+        "E501",
+    ],
+    "anaconda_gutter_theme": "hard",
+    "anaconda_linting_behaviour": "save-only",
+    "anaconda_linter_mark_style": "none",
+    "anaconda_linter_underlines": true,
+    "auto_python_builder_enabled": false,
+    "merge_signatures_and_doc": true,
+    "auto_formatting_timeout": 3,
+}
