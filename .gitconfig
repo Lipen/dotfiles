@@ -1,6 +1,8 @@
+[core]
+    autocrlf = input
 [user]
-    email = lipen00@gmail.com
     name = Lipen
+    email = lipen00@gmail.com
 [color]
     ui = true
     pager = true
