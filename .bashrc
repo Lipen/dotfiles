@@ -7,8 +7,15 @@
 # Enable auto-cd feature
 shopt -s autocd
 
-# Enable history appending instead of overwriting.  #139609
+# Avoid duplicates in bash history
+export HISTCONTROL=ignoredups:erasedups
+# Big bash history
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+# When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
+# After each command, append to the history file and reread it
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 # I don not know what is going on in this block...
 xhost +local:root > /dev/null 2>&1
@@ -73,3 +80,6 @@ fi
 
 # enable bash completion for 'conda'
 # eval "$(register-python-argcomplete conda)"
+
+# enable bash history append from all terminals
+# export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
