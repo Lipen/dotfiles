@@ -57,3 +57,12 @@ alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
+
+# thefuck alias
+eval $(thefuck --alias)
+
+# Noice is Not Noice alias
+alias n=nnn
+
+# colored cat (!! use \cat to get default behaviour)
+alias cat=ccat
