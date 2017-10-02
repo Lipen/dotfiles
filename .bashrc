@@ -45,7 +45,10 @@ my_bash_prompt () {
 
     local RESET="\[\033[0m\]"
 
-    PS1="${EMM}[${EMY}\$(date +%k:%M) ${EMR}:: ${EMG}\u${EMB}@\h ${EMR}:: ${EMC}\w${EMM}]${RESET}\n${EMM}λ:${RESET} "
+    local first_line="${EMM}[${EMY}\$(date +%k:%M) ${EMR}:: ${EMG}\u${EMB}@\h ${EMR}:: ${EMC}\w${EMM}]${RESET}"
+    local second_line="${EMM}λ:${RESET} "
+
+    PS1="${first_line}\n${second_line}"
 }
 
 my_bash_prompt
@@ -83,3 +86,12 @@ fi
 
 # enable bash history append from all terminals
 # export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
+
+# Noice is Not Noice :: settings
+export NNN_COPIER="$HOME/dev/copier.sh"
+export NNN_DE_FILE_MANAGER=nautilus
+
+# source autojump
+if [ -f /etc/profile.d/autojump.bash ] ; then
+    source /etc/profile.d/autojump.bash
+fi
