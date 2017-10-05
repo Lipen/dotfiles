@@ -1,86 +1,86 @@
 {
-    "always_show_minimap_viewport": true,
-    "atomic_save": true,
-    "auto_complete_cycle": true,
-    "bold_folder_labels": true,
-    "caret_style": "phase",
-    "color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-    "draw_indent_guides": true,
-    "draw_white_space": "selection",
-    "ensure_newline_at_eof_on_save": true,
-    "fallback_encoding": "Cyrillic (Windows 1251)",
-    "file_exclude_patterns":
-    [
-        ".DS_Store",
-        "*.pid",
-        "*.pyc",
-        "*.exe",
-        "*.o"
-    ],
-    "folder_exclude_patterns":
-    [
-        ".git",
-        "__pycache__"
-    ],
-    "font_options":
-    [
-        "subpixel_antialias"
-    ],
-    "font_size": 15,
-    "highlight_line": true,
-    "highlight_modified_tabs": true,
-    "ignored_packages":
-    [
-        "ActionScript",
-        "AppleScript",
-        "ASP",
-        "D",
-        "Erlang",
-        "Groovy",
-        "Markdown",
-        "OCaml",
-        "TCL",
-        "Vintage"
-    ],
-    "indent_guide_options":
-    [
-        "draw_normal",
-        "draw_active"
-    ],
-    "index_exclude_patterns":
-    [
-        "*.log",
-        "*.exe"
-    ],
-    "line_padding_bottom": 2,
-    "line_padding_top": 2,
-    "material_theme_accent_scrollbars": true,
-    "material_theme_big_fileicons": true,
-    "material_theme_bold_tab": true,
-    "material_theme_bright_scrollbars": true,
-    "material_theme_compact_panel": true,
-    "material_theme_compact_sidebar": true,
-    "material_theme_contrast_mode": true,
-    "material_theme_small_tab": true,
-    "material_theme_tabs_separator": true,
-    "material_theme_tree_headings": true,
-    "mouse_wheel_switches_tabs": true,
-    "rulers":
-    [
-        72,
-        79
-    ],
-    "scroll_past_end": false,
-    "scroll_speed": 0.5,
-    "show_definitions": false,
-    "show_encoding": true,
-    "show_tab_close_buttons": false,
-    "smart_indent": true,
-    "tab_size": 4,
-    "theme": "Material-Theme-Darker.sublime-theme",
-    "translate_tabs_to_spaces": true,
-    "trim_trailing_white_space_on_save": true,
-    "wide_caret": true,
-    "word_wrap": false,
-    "wrap_width": 80
+	"always_show_minimap_viewport": true,
+	"atomic_save": true,
+	"auto_complete_cycle": true,
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"draw_indent_guides": true,
+	"draw_white_space": "selection",
+	"ensure_newline_at_eof_on_save": true,
+	"fallback_encoding": "Cyrillic (Windows 1251)",
+	"file_exclude_patterns":
+	[
+		".DS_Store",
+		"*.pid",
+		"*.pyc",
+		"*.exe",
+		"*.o"
+	],
+	"folder_exclude_patterns":
+	[
+		".git",
+		"__pycache__"
+	],
+	"font_options":
+	[
+		"subpixel_antialias"
+	],
+	"font_size": 15,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"ActionScript",
+		"AppleScript",
+		"ASP",
+		"D",
+		"Erlang",
+		"Groovy",
+		"Markdown",
+		"OCaml",
+		"TCL",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"index_exclude_patterns":
+	[
+		"*.log",
+		"*.exe"
+	],
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
+	"material_theme_accent_scrollbars": true,
+	"material_theme_big_fileicons": true,
+	"material_theme_bold_tab": true,
+	"material_theme_bright_scrollbars": true,
+	"material_theme_compact_panel": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_tab": true,
+	"material_theme_tabs_separator": true,
+	"material_theme_tree_headings": true,
+	"mouse_wheel_switches_tabs": true,
+	"rulers":
+	[
+		72,
+		79
+	],
+	"scroll_past_end": false,
+	"scroll_speed": 0.5,
+	"show_definitions": false,
+	"show_encoding": true,
+	"show_tab_close_buttons": false,
+	"smart_indent": true,
+	"tab_size": 4,
+	"theme": "Material-Theme-Darker.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"wide_caret": true,
+	"word_wrap": false,
+	"wrap_width": 80
 }
