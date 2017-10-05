@@ -1,8 +1,11 @@
-[core]
-    autocrlf = input
 [user]
     name = Lipen
     email = lipen00@gmail.com
+	signingkey = D0EF616F416E8333
+[core]
+    autocrlf = input
+[commit]
+    gpgsign = true
 [color]
     ui = true
     pager = true
