@@ -6,8 +6,8 @@
     },
     {
         "keys": ["alt+shift+7"],
-        "caption": "2 cols (full - 2)",
         "command": "set_layout",
+        "caption": "2 cols (full - 2)",
         "args": {
             "cols": [0.0, 0.8, 1.0],
             "rows": [0.0, 0.6, 1.0],
@@ -25,9 +25,7 @@
     {
         "keys": ["f4"],
         "command": "show_panel",
-        "args": {
-            "panel": "output.exec",
-        },
+        "args": {"panel": "output.exec"},
     },
     {
         "keys": ["ctrl+alt+e"],
@@ -36,13 +34,43 @@
     {
         "keys": ["ctrl+k", "ctrl+t"],
         "command": "toggle_setting",
-        "args": {
-            "setting": "word_wrap"
-        },
+        "args": {"setting": "word_wrap"},
     },
     {
-        "command": "anaconda_doc", "keys": ["ctrl+q"], "context": [
-            {"key": "selector", "operator": "equal", "operand": "source.python"}
-        ]
+        "keys": ["ctrl+q"],
+        "command": "anaconda_doc",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "source.python"
+        }]
+    },
+    {
+        "keys": ["ctrl+alt+up"],
+        "command": "select_lines",
+        "args": {"forward": false}
+    },
+    {
+        "keys": ["ctrl+alt+down"],
+        "command": "select_lines",
+        "args": {"forward": true}
+    },
+    {
+        "keys": ["ctrl+alt+left"],
+        "command": "move",
+        "args": {
+            "by": "subwords",
+            "forward": false,
+            "extend": true
+        }
+    },
+    {
+        "keys": ["ctrl+alt+right"],
+        "command": "move",
+        "args": {
+            "by": "subword_ends",
+            "forward": true,
+            "extend": true
+        }
     },
 ]
