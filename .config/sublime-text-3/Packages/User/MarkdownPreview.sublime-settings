@@ -1,0 +1,5 @@
+{
+    "enable_mathjax": true,
+    "enable_autoreload": true,
+    "image_path_conversion": "base64",
+}
