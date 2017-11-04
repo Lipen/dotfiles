@@ -95,3 +95,6 @@ export NNN_DE_FILE_MANAGER=nautilus
 if [ -f /etc/profile.d/autojump.bash ] ; then
     source /etc/profile.d/autojump.bash
 fi
+
+# add Java home
+export JAVA_HOME=/usr/lib/jvm/default
