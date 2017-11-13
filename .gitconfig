@@ -1,11 +1,24 @@
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    unstage = reset HEAD --
+    uncommit = reset --soft HEAD~1
+    last = log -1 HEAD
+    lg = log --graph --pretty=format:\"%C(auto)%h -%d %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --abbrev-commit
+    commend = commit --amend --no-edit
+    merc = merge --no-ff
+    grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
 [user]
     name = Lipen
     email = lipen00@gmail.com
-	signingkey = D0EF616F416E8333
+    signingkey = D0EF616F416E8333
 [core]
     autocrlf = input
 [commit]
     gpgsign = true
+[pull]
+    rebase = true
 [color]
     ui = true
     pager = true
