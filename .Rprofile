@@ -8,6 +8,7 @@ local({
 })
 
 options(width = 140)
+options(prompt = "λ ")
 
 if (interactive()) {
     # Everything in here is only run if R is in "interactive" (as opposed to batch/script) mode
