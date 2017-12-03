@@ -46,7 +46,7 @@ my_bash_prompt () {
     local RESET="\[\033[0m\]"
 
     local first_line="${EMM}[${EMY}\$(date +%k:%M) ${EMR}:: ${EMG}\u${EMB}@\h ${EMR}:: ${EMC}\w${EMM}]${RESET}"
-    local second_line="${EMM}λ:${RESET} "
+    local second_line="${EMM}λ${RESET} "
 
     PS1="${first_line}\n${second_line}"
 }
