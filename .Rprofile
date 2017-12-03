@@ -7,6 +7,8 @@ local({
     options(repos = r)
 })
 
+options(width = 140)
+
 if (interactive()) {
     # Everything in here is only run if R is in "interactive" (as opposed to batch/script) mode
     library(colorout)
