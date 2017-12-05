@@ -16,5 +16,5 @@
     "anaconda_linter_underlines": true,
     "auto_python_builder_enabled": false,
     "merge_signatures_and_doc": true,
-    "auto_formatting_timeout": 3,
+    "auto_formatting_timeout": 30,
 }
