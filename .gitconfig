@@ -19,6 +19,8 @@
     gpgsign = true
 [pull]
     rebase = true
+[advice]
+    ignoredHook = false
 [color]
     ui = true
     pager = true
