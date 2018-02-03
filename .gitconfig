@@ -9,6 +9,7 @@
     commend = commit --amend --no-edit
     merc = merge --no-ff
     grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+    stash-unapply = !git stash show -p | git apply -R
 [user]
     name = Lipen
     email = lipen00@gmail.com
