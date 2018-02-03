@@ -1,8 +1,8 @@
 [[ $- != *i* ]] && return
 
-# if [ -f ~/.extend.bashrc ]; then
-#     source ~/.extend.bashrc
-# fi
+if [ -f ~/.extend.bashrc ]; then
+    source ~/.extend.bashrc
+fi
 
 # Enable auto-cd feature
 shopt -s autocd
