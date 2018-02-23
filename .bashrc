@@ -10,8 +10,8 @@ shopt -s autocd
 # Avoid duplicates in bash history
 export HISTCONTROL=ignoredups:erasedups
 # Big bash history
-export HISTSIZE=10000
-export HISTFILESIZE=10000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 # After each command, append to the history file and reread it
@@ -98,3 +98,9 @@ fi
 
 # add Java home
 export JAVA_HOME=/usr/lib/jvm/default
+
+# add hub alias (`git`)
+# if [ -x "$(command -v hub)" ]; then
+if hash hub &> /dev/null; then
+    eval "$(hub alias -s)"
+fi
