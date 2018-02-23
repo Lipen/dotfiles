@@ -12,5 +12,5 @@ options(prompt = "λ ")
 
 if (interactive()) {
     # Everything in here is only run if R is in "interactive" (as opposed to batch/script) mode
-    library(colorout)
+    require(colorout)
 }
