@@ -3,3 +3,5 @@ channels:
   - defaults
 create_default_packages:
   - pip
+pinned_packages:
+  - defaults::conda
