@@ -41,6 +41,7 @@ alias du='du -ch'
 alias mkdir='mkdir -p -v'
 alias ping='ping -c 5'
 alias nano='nano -w'
+alias R='R --no-save --no-restore'
 
 ## New commands
 alias dus='du -sh * | sort -h'
