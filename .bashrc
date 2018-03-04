@@ -63,9 +63,6 @@ if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
-# added by Miniconda3 4.3.21 installer
-export PATH="/home/magnaron/miniconda3/bin:$PATH"
-
 # add Android SDK platform tools to path
 # if [ -d "$HOME/platform-tools" ] ; then
 #     PATH="$HOME/platform-tools:$PATH"
@@ -104,3 +101,7 @@ export JAVA_HOME=/usr/lib/jvm/default
 if hash hub &> /dev/null; then
     eval "$(hub alias -s)"
 fi
+
+# Miniconda
+source /home/magnaron/miniconda3/etc/profile.d/conda.sh
+conda activate
