@@ -17,6 +17,11 @@ function targzp() {
     tar -c --use-compression-command='pigz -p 16 --best' -f "compressed_${1%.*}.tar.gz" $1
 }
 
+## which
+which () {
+    (alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+}
+
 ## clear aliases
 alias cls=clear
 alias clr=' echo -ne "\033c"'
