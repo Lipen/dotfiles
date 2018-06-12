@@ -4,6 +4,14 @@ if [ -f ~/.extend.bashrc ]; then
     source ~/.extend.bashrc
 fi
 
+if [ -r /usr/share/bash-completion/bash_completion ]; then
+    source /usr/share/bash-completion/bash_completion
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+
 # Enable auto-cd feature
 shopt -s autocd
 
@@ -54,24 +62,15 @@ my_bash_prompt () {
 my_bash_prompt
 unset my_bash_prompt
 
-
-if [ -r /usr/share/bash-completion/bash_completion ]; then
-    source /usr/share/bash-completion/bash_completion
-fi
-
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
-fi
-
-# add Android SDK platform tools to path
-# if [ -d "$HOME/platform-tools" ] ; then
-#     PATH="$HOME/platform-tools:$PATH"
-# fi
-
+export EDITOR='less'
 export VISUAL='subl --wait'
 
 # better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
+
+# Noice is Not Noice :: settings
+export NNN_COPIER="$HOME/dev/copier.sh"
+export NNN_DE_FILE_MANAGER=nautilus
 
 # add <command-not-found> script from 'pkgfile' package
 # if [ -f /usr/share/doc/pkgfile/command-not-found.bash ] ; then
@@ -84,22 +83,12 @@ export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1
 # enable bash history append from all terminals
 # export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
-# Noice is Not Noice :: settings
-export NNN_COPIER="$HOME/dev/copier.sh"
-export NNN_DE_FILE_MANAGER=nautilus
+# add Java home
+# export JAVA_HOME=/usr/lib/jvm/default
 
-# source autojump
+# autojump
 if [ -f /etc/profile.d/autojump.bash ] ; then
     source /etc/profile.d/autojump.bash
-fi
-
-# add Java home
-export JAVA_HOME=/usr/lib/jvm/default
-
-# add hub alias (`git`)
-# if [ -x "$(command -v hub)" ]; then
-if hash hub &> /dev/null; then
-    eval "$(hub alias -s)"
 fi
 
 # Miniconda
