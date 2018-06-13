@@ -45,17 +45,19 @@ alias diff='colordiff'
 alias df='df -h'
 alias free='free -m'
 alias more=less
-alias du='du -ch'
+alias du='du -h --max-depth=1 --apparent-size 2>/dev/null'
 alias mkdir='mkdir -p -v'
 alias ping='ping -c 5'
 alias nano='nano -w'
 alias R='R --no-save --no-restore'
 
 ## New commands
-alias dus='du -sh * | sort -h'
+alias dus='du | sort -h'
+alias dusl='du | sort -rh | less'
 alias hist='history | less'
 alias da='date "+%A, %B %d, %Y [%T]"'
 alias ping8='ping 8.8.8.8'
+alias ping1='ping 1.1.1.1'
 # alias ..='cd ..'
 
 ## Safety features
@@ -72,8 +74,10 @@ if hash nnn &> /dev/null; then
     alias n=nnn
 fi
 
-# colored cat alias (!! use \cat to get default behaviour)
-alias cat=ccat
+## colored cat alias (!! use \cat to get default behaviour)
+if hash ccat &> /dev/null; then
+    alias cat=ccat
+fi
 
 ## ranger with autocd to visited location alias
 if hash ranger &> /dev/null; then
