@@ -15,6 +15,7 @@
 		"*.pid",
 		"*.pyc",
 		"*.exe",
+		"*.class",
 		"*.o"
 	],
 	"folder_exclude_patterns":
@@ -22,12 +23,12 @@
 		".git",
 		"__pycache__"
 	],
-	"font_face": "Source Code Pro",
+	"font_face": "Hasklig",
 	"font_options":
 	[
 		"subpixel_antialias"
 	],
-	"font_size": 14,
+	"font_size": 15,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -68,8 +69,8 @@
 	"mouse_wheel_switches_tabs": true,
 	"rulers":
 	[
-		72,
-		79
+		79,
+		100
 	],
 	"scroll_past_end": false,
 	"scroll_speed": 0.5,
@@ -83,5 +84,5 @@
 	"trim_trailing_white_space_on_save": true,
 	"wide_caret": true,
 	"word_wrap": false,
-	"wrap_width": 80
+	"wrap_width": 120
 }
