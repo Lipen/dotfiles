@@ -92,5 +92,5 @@ if [ -f /etc/profile.d/autojump.bash ] ; then
 fi
 
 # Miniconda
-source /home/magnaron/miniconda3/etc/profile.d/conda.sh
+source ${HOME}/miniconda3/etc/profile.d/conda.sh
 conda activate
