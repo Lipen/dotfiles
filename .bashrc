@@ -69,8 +69,9 @@ export VISUAL='subl --wait'
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 
 # Noice is Not Noice :: settings
-export NNN_COPIER="$HOME/dev/copier.sh"
 export NNN_DE_FILE_MANAGER=nautilus
+export NNN_COPIER="$HOME/bin/copier"
+export NNN_TRASH=1
 
 # add <command-not-found> script from 'pkgfile' package
 # if [ -f /usr/share/doc/pkgfile/command-not-found.bash ] ; then
@@ -94,3 +95,6 @@ fi
 # Miniconda
 source ${HOME}/miniconda3/etc/profile.d/conda.sh
 conda activate
+
+# opam configuration
+test -r /home/azuregos/.opam/opam-init/init.sh && . /home/azuregos/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
