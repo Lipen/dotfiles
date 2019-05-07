@@ -18,7 +18,7 @@ shopt -s autocd
 # Avoid duplicates in bash history
 export HISTCONTROL=ignoredups:erasedups
 # Big bash history
-export HISTSIZE=100000
+export HISTSIZE=500000
 export HISTFILESIZE=100000
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
