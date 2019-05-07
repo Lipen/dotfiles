@@ -76,7 +76,7 @@ fi
 
 ## colored cat alias (!! use \cat to get default behaviour)
 if hash ccat &> /dev/null; then
-    alias cat=ccat
+    alias cat=ccat -G Plaintext="white" -G Punctuation="darkteal" -G Keyword="fuscia" -G Decimal="blue" -G Type="blue" -G Comment="darkgrey"
 fi
 
 ## ranger with autocd to visited location alias
