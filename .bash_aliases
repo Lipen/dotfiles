@@ -104,3 +104,8 @@ fi
 function z {
     cd ~/.config/"$1"
 }
+
+## gradlew alias (https://github.com/dougborg/gdub)
+if hash gw &> /dev/null; then
+    alias gradle='gw'
+fi
