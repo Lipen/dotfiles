@@ -21,7 +21,7 @@ which () {
 }
 
 ## clear aliases
-alias cls=clear
+alias cls='clear'
 alias clr=' echo -ne "\033c"'
 
 ## ls aliases
@@ -71,12 +71,12 @@ alias chgrp='chgrp --preserve-root'
 
 ## Noice is Not Noice alias
 if hash nnn &> /dev/null; then
-    alias n=nnn
+    alias n='nnn'
 fi
 
 ## colored cat alias (!! use \cat to get default behaviour)
 if hash ccat &> /dev/null; then
-    alias cat=ccat -G Plaintext="white" -G Punctuation="darkteal" -G Keyword="fuscia" -G Decimal="blue" -G Type="blue" -G Comment="darkgrey"
+    alias cat='ccat -G Plaintext="white" -G Punctuation="darkteal" -G Keyword="fuscia" -G Decimal="blue" -G Type="blue" -G Comment="darkgrey"'
 fi
 
 ## ranger with autocd to visited location alias
@@ -90,7 +90,7 @@ if hash ranger &> /dev/null; then
         fi
         rm -f -- "$tempfile"
     }
-    alias r=ranger-cd
+    alias r='ranger-cd'
 fi
 
 ## highlight and show via less
