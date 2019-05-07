@@ -24,6 +24,8 @@ export HISTFILESIZE=100000
 shopt -s histappend
 # After each command, append to the history file and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+# Enable ** type globs
+shopt -s globstar
 
 # I don not know what is going on in this block...
 xhost +local:root > /dev/null 2>&1
