@@ -109,3 +109,8 @@ function z {
 if hash gw &> /dev/null; then
     alias gradle='gw'
 fi
+
+## hub alias (https://github.com/github/hub)
+if hash hub &> /dev/null; then
+    alias git='hub'
+fi
