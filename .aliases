@@ -20,7 +20,7 @@ alias egrep='egrep --color=auto'
 alias less='less -R'
 alias diff='colordiff'
 alias df='df -h'
-alias free='free -m'
+alias free='free -h'
 alias more=less
 alias du='du -h --max-depth=1 --apparent-size 2>/dev/null'
 alias mkdir='mkdir -p -v'
