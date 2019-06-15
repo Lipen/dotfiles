@@ -148,12 +148,16 @@ bindkey '^ ' autosuggest-accept
 # Push current command
 bindkey '^Q' push-input
 
-# Setup conda
-include ~/miniconda3/etc/profile.d/conda.sh
-conda activate base
+if [ -d "$HOME/miniconda3" ]; then
+    # Setup conda
+    include ~/miniconda3/etc/profile.d/conda.sh
+    conda activate base
 
-# Enable conda completion (see https://github.com/esc/conda-zsh-completion)
-fpath+=$ZSH_CUSTOM/stuff/conda-zsh-completion
-compinit
-zstyle ':completion::complete:*' use-cache 1
-zstyle ":conda_zsh_completion:*" use-groups true
+    # Enable conda completion (see https://github.com/esc/conda-zsh-completion)
+    fpath+=$ZSH_CUSTOM/stuff/conda-zsh-completion
+    compinit
+    zstyle ':completion::complete:*' use-cache 1
+    zstyle ":conda_zsh_completion:*" use-groups true
+else
+    echo 'miniconda not found!'
+fi
