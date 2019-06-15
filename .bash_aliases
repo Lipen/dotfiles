@@ -1,6 +1,6 @@
 ## ls dircolors
 if hash dircolors &> /dev/null; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    [[ -f ~/.dir_colors ]] && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 fi
 
 ## tar-and-compress
