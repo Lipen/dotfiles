@@ -36,6 +36,7 @@ alias da='date "+%A, %B %d, %Y [%T]"'
 alias ping8='ping 8.8.8.8'
 alias ping1='ping 1.1.1.1'
 alias cd..='cd ..'
+alias zshrc='subl ~/.zshrc'
 
 ## Safety features
 alias cp='cp -i'
