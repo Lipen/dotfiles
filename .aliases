@@ -50,6 +50,7 @@ alias chgrp='chgrp --preserve-root'
 ## Noice is Not Noice alias
 if hash nnn &> /dev/null; then
     alias n='nnn'
+    alias т='nnn'
 fi
 
 ## colored cat alias (!! use \cat to get default behaviour)
