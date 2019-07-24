@@ -151,7 +151,7 @@ bindkey '^Q' push-input
 
 # Setup Miniconda
 if [ -d "$HOME/miniconda3" ]; then
-    include ~/miniconda3/etc/profile.d/conda.sh
+    source ~/miniconda3/etc/profile.d/conda.sh
     conda activate base
 
     # Enable conda completion (see https://github.com/esc/conda-zsh-completion)
