@@ -162,3 +162,9 @@ if [ -d "$HOME/miniconda3" ]; then
 else
     echo 'miniconda not found!'
 fi
+
+# Makefile autocompletion (See https://github.com/zsh-users/zsh-completions/issues/541)
+# zstyle ':completion:*:make:*:targets' call-command true # outputs all possible results for make targets
+# zstyle ':completion:*:make:*' tag-order targets
+# zstyle ':completion:*' group-name ''
+# zstyle ':completion:*:descriptions' format '%B%d%b'
