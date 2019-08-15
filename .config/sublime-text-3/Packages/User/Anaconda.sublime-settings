@@ -1,16 +1,15 @@
 {
     "autoformat_ignore":
     [
-        "W191",
         "E501",
         "E126",
+        "W503",
     ],
-
     "pep8_ignore":
     [
-        "W191",
         "E501",
         "E126",
+        "W503",
     ],
     "anaconda_gutter_theme": "hard",
     "anaconda_linting_behaviour": "save-only",
