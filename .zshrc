@@ -117,6 +117,8 @@ plugins=(
     sudo
     zsh_reload
     you-should-use
+    poetry
+    virtualenv
     # some say that these two must be last
     fast-syntax-highlighting
     zsh-autosuggestions
@@ -126,7 +128,7 @@ source $ZSH/oh-my-zsh.sh
 
 ## User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin:$HOME/.poetry/bin
 export MANPATH="/usr/local/man:$MANPATH"
 export LESS="-F -X $LESS"
 export YSU_MESSAGE_POSITION="after"
@@ -168,3 +170,11 @@ fi
 # zstyle ':completion:*:make:*' tag-order targets
 # zstyle ':completion:*' group-name ''
 # zstyle ':completion:*:descriptions' format '%B%d%b'
+
+# Setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi

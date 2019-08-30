@@ -14,3 +14,5 @@ fi
 if hash thefuck &> /dev/null; then
     eval "$(thefuck --alias)"
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
