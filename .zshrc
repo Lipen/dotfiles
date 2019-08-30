@@ -7,7 +7,7 @@ POWERLEVEL9K_MODE="nerdfont-complete"
 
 ## Powerlevel9k configuration
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh dir dir_writable vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh virtualenv dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status command_execution_time load time)
 
 # 193 = darkseagreen1a
