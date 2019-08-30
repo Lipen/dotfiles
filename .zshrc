@@ -139,7 +139,7 @@ include () {
 include ~/.aliases
 
 # Setup dircolors
-if hash dircolors &> /dev/null; then
+if command -v dircolors &> /dev/null; then
     [[ -f ~/.dir_colors ]] && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 fi
 

@@ -50,18 +50,18 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 ## Noice is Not Noice alias
-if hash nnn &> /dev/null; then
+if command -v nnn &> /dev/null; then
     alias n='nnn'
     alias т='nnn'
 fi
 
 ## colored cat alias (!! use \cat to get default behaviour)
-if hash ccat &> /dev/null; then
+if command -v ccat &> /dev/null; then
     alias cat='ccat -G Plaintext="white" -G Punctuation="darkteal" -G Keyword="fuscia" -G Decimal="blue" -G Type="blue" -G Comment="darkgrey"'
 fi
 
 ## ranger with autocd to visited location alias
-if hash ranger &> /dev/null; then
+if command -v ranger &> /dev/null; then
     function ranger-cd {
         tempfile="$(mktemp -t tmp.XXXXXX)"
         ranger --choosedir="$tempfile" "${@:-$(pwd)}"
@@ -75,13 +75,13 @@ if hash ranger &> /dev/null; then
 fi
 
 ## highlight and show via less
-if hash highlight &> /dev/null; then
+if command -v highlight &> /dev/null; then
     function hl {
         highlight -O xterm256 $* | less
     }
 fi
 
 ## gradlew alias (https://github.com/dougborg/gdub)
-if hash gw &> /dev/null; then
+if command -v gw &> /dev/null; then
     alias gradle='gw'
 fi
