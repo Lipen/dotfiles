@@ -86,3 +86,11 @@ fi
 if command -v gw &> /dev/null; then
     alias gradle='gw'
 fi
+
+meta() {
+    if [ "${1}" = "" ] || [ "${2}" = "" ]; then
+        echo "Usage: meta <paragraphs|sentences> <int> [int]"
+    else
+        curl "http://metaphorpsum.com/${1}/${2}/${3}" && printf "\n"
+    fi
+}
