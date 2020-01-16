@@ -14,7 +14,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status command_execution_tim
 
 # prompt
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%f"
 # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%f "
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\u03BB%f "
@@ -125,6 +125,8 @@ plugins=(
     you-should-use
     poetry
     virtualenv
+    navi
+    autoupdate
     # some say that these two must be last
     fast-syntax-highlighting
     zsh-autosuggestions
@@ -177,13 +179,19 @@ fi
 # zstyle ':completion:*' group-name ''
 # zstyle ':completion:*:descriptions' format '%B%d%b'
 
-# Setup pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
+# # Setup pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv 1>/dev/null 2>&1; then
+#     eval "$(pyenv init -)"
+#     eval "$(pyenv virtualenv-init -)"
+# fi
+
+# Setup thefuck
+eval $(thefuck --alias)
+
+# Disable beep
+unsetopt BEEP
 
 
 # zprof
