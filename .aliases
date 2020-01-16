@@ -39,6 +39,7 @@ alias ping1='ping 1.1.1.1'
 alias cd..='cd ..'
 alias zshrc='subl ~/.zshrc'
 alias wh='which -a'
+alias q='cd && clr'
 
 ## Safety features
 alias cp='cp -i'
