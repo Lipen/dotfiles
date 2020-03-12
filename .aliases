@@ -85,6 +85,7 @@ fi
 ## gradlew alias (https://github.com/dougborg/gdub)
 if command -v gw &> /dev/null; then
     alias gradle='gw'
+    alias gwo='gw --offline'
 fi
 
 meta() {
