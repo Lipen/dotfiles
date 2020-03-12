@@ -125,7 +125,6 @@ plugins=(
     you-should-use
     poetry
     virtualenv
-    navi
     autoupdate
     # some say that these two must be last
     fast-syntax-highlighting
