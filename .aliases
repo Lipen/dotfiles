@@ -95,3 +95,8 @@ meta() {
         curl "http://metaphorpsum.com/${1}/${2}/${3}" && printf "\n"
     fi
 }
+
+## lazydocker alias
+if command -v lazydocker &> /dev/null; then
+    alias lzd='lazydocker'
+fi
