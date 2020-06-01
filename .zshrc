@@ -2,69 +2,16 @@
 
 export ZSH=$HOME/.oh-my-zsh
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="nerdfont-complete"
-
-## Powerlevel9k configuration
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh virtualenv dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status command_execution_time load time)
-
-# 193 = darkseagreen1a
-
-# prompt
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%f"
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%f "
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\u03BB%f "
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-# POWERLEVEL9K_SHORTEN_STRATEGY='truncate_from_right'
-POWERLEVEL9K_SHORTEN_STRATEGY='truncate_to_unique'
-POWERLEVEL9K_SHORTEN_DELIMITER='‥'
-
-# context
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='blue'
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='black'
-POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND='red'
-POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND='black'
-POWERLEVEL9K_CONTEXT_SUDO_FOREGROUND='red'
-POWERLEVEL9K_CONTEXT_SUDO_BACKGROUND='black'
-# dir
-POWERLEVEL9K_DIR_PATH_SEPARATOR=" \uE0B1 "
-typeset POWERLEVEL9K_DIR_{HOME,HOME_SUBFOLDER,DEFAULT,ETC}_FOREGROUND='black'
-typeset POWERLEVEL9K_DIR_{HOME,HOME_SUBFOLDER,DEFAULT,ETC}_BACKGROUND='blue'
-# dir_writable
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='white'
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND='red'
-# vcs
-POWERLEVEL9K_SHOW_CHANGESET=true
-POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='193'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
-
-# background_jobs
-POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='black'
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='yellow'
-# status
-POWERLEVEL9K_STATUS_OK_FOREGROUND='green'
-POWERLEVEL9K_STATUS_OK_BACKGROUND='black'
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND='yellow'
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND='red'
-# command_execution_time
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='white'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='black'
-# load
-POWERLEVEL9K_LOAD_NORMAL_FOREGROUND='white'  # green
-POWERLEVEL9K_LOAD_WARNING_FOREGROUND='yellow'
-POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND='red'
-typeset POWERLEVEL9K_LOAD_{NORMAL,WARNING,CRITICAL}_BACKGROUND='black'
-# time
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
-POWERLEVEL9K_TIME_FOREGROUND='white'
-POWERLEVEL9K_TIME_BACKGROUND='black'
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ## ZSH configuration
 
@@ -109,23 +56,28 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
+    asdf
+    autoupdate
+    colored-man-pages
+    conda-zsh-completion
+    copybuffer
+    copydir
+    copyfile
+    cp
+    fasd
+    fzf
     git
     gitfast
     github
-    fasd
-    cp
-    copyfile
-    copydir
-    copybuffer
     history
-    colored-man-pages
     man
-    sudo
-    zsh_reload
-    you-should-use
     poetry
+    sudo
     virtualenv
-    autoupdate
+    you-should-use
+    # zsh-autocomplete
+    zsh-completions
+    zsh_reload
     # some say that these two must be last
     fast-syntax-highlighting
     zsh-autosuggestions
@@ -152,31 +104,34 @@ if command -v dircolors &> /dev/null; then
     [[ -f ~/.dir_colors ]] && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 fi
 
-# Bind ctrl+space to accept auto-completion
-bindkey '^ ' autosuggest-accept
+# fzf file fuzzy-search
+bindkey '^ ' fzf-file-widget
 
 # Push current command
-bindkey '^Q' push-input
+bindkey '^q' push-line-or-edit
 
 # Setup Miniconda
 if [ -d "$HOME/miniconda3" ]; then
     source ~/miniconda3/etc/profile.d/conda.sh
     conda activate base
-
-    # Enable conda completion (see https://github.com/esc/conda-zsh-completion)
-    fpath+=$ZSH_CUSTOM/stuff/conda-zsh-completion
-    compinit
-    zstyle ':completion::complete:*' use-cache 1
-    zstyle ":conda_zsh_completion:*" use-groups true
 else
     echo 'miniconda not found!'
 fi
+
+# Setup conda completion (see https://github.com/esc/conda-zsh-completion)
+zstyle ':completion::complete:*' use-cache 1
+zstyle ":conda_zsh_completion:*" use-groups true
 
 # Makefile autocompletion (See https://github.com/zsh-users/zsh-completions/issues/541)
 # zstyle ':completion:*:make:*:targets' call-command true # outputs all possible results for make targets
 # zstyle ':completion:*:make:*' tag-order targets
 # zstyle ':completion:*' group-name ''
 # zstyle ':completion:*:descriptions' format '%B%d%b'
+
+# Setup zsh-autocomplete
+# zstyle ':autocomplete:*' groups 'always'
+# zstyle ':autocomplete:tab:*' completion 'select'
+# zstyle ':autocomplete:(slash|space):*' magic 'off'
 
 # # Setup pyenv
 # export PYENV_ROOT="$HOME/.pyenv"
