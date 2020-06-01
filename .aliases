@@ -38,6 +38,7 @@ alias ping8='ping 8.8.8.8'
 alias ping1='ping 1.1.1.1'
 alias cd..='cd ..'
 alias zshrc='subl ~/.zshrc'
+alias aliases='subl ~/.aliases'
 alias wh='which -a'
 alias q='cd && clr'
 
