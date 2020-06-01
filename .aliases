@@ -101,3 +101,8 @@ meta() {
 if command -v lazydocker &> /dev/null; then
     alias lzd='lazydocker'
 fi
+
+## which packages own the specified binaries
+own() {
+    pacman -Qo $(/usr/bin/which -a --skip-alias --skip-functions $@)
+}
