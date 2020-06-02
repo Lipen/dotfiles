@@ -48,6 +48,8 @@ alias zshrc='subl ~/.zshrc'
 alias aliases='subl ~/.aliases'
 alias wh='which -a'
 alias q='cd && clr'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 ## Safety features
 alias cp='cp -i'
