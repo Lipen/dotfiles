@@ -10,8 +10,15 @@ alias clr=' echo -ne "\033c"'
 ## ls aliases
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -alGh'
-alias la='ls -A'
-alias l='ls -CF'
+unalias la
+unalias l
+
+## exa aliases
+if command -v exa &> /dev/null; then
+    alias ls='exa --group-directories-first'
+    alias ll='ls --all --long --git --classify --color-scale'
+    alias l='ls --long'
+fi
 
 ## Modified commands
 alias grep='grep --color=auto'
