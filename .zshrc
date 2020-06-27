@@ -66,6 +66,8 @@ plugins=(
     cp
     fasd
     fzf
+    fzf-fasd
+    fzf-tab
     git
     gitfast
     github
@@ -77,6 +79,7 @@ plugins=(
     you-should-use
     # zsh-autocomplete
     zsh-completions
+    zsh-interactive-cd
     zsh_reload
     # some say that these two must be last
     fast-syntax-highlighting
@@ -104,8 +107,102 @@ if command -v dircolors &> /dev/null; then
     [[ -f ~/.dir_colors ]] && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 fi
 
+# Setup fzf
+export FZF_DEFAULT_OPTS="
+    --prompt='> '
+    --pointer='▶'
+    --marker='✓'
+    --height=80%
+    --layout=reverse
+    --preview-window ':hidden'
+    --bind 'ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'
+    --bind 'ctrl-e:execute(echo {+} | xargs subl)'
+    --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+    --bind '?:toggle-preview'
+"
+export FZF_CTRL_R_OPTS="
+    --exit-0
+    --preview 'echo {}'
+    --preview-window 'down:3:wrap:hidden'
+"
+export FZF_CTRL_T_OPTS="
+    --exit-0
+    --preview
+        'if [ -d {} ]; then
+            tree -C --dirsfirst {} | less;
+        elif [ -f {} ]; then
+            case {} in
+                *.gz | *.tgz | *.zip | *.tar | *.jar | *.rar )
+                    als {} || file {} ;;
+                *)
+                    bat --color=always --wrap=character --terminal-width=\$(bc <<< "\$COLUMNS*0.7/1-4") {} || cat {} ;;
+            esac ;
+        else
+            file {};
+        fi'
+    --preview-window 'right:70%:wrap:hidden'
+"
+export FZF_ALT_C_OPTS="
+    --exit-0
+    --preview 'tree -C --dirsfirst -L 1 {} | less'
+    --preview-window 'right:70%:hidden'
+"
+export FZF_FASD_OPTS="--prompt='fasd_cd> '"
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+# Use fd for listing path candidates
+_fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# Fuzzy-find in history and run
+fzf-history-widget-accept() {
+    fzf-history-widget
+    zle accept-line
+}
+zle     -N     fzf-history-widget-accept
+bindkey '^X^R' fzf-history-widget-accept
+
+# fasd+fzf
+unalias z
+unset z
+z() {
+    [ $# -gt 0 ] && fasd_cd -d "$*" && return
+    local dir
+    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+
 # fzf file fuzzy-search
-bindkey '^ ' fzf-file-widget
+# bindkey '^ ' fzf-file-widget
+
+# fzf-tab: Disable sort when completing options of any command
+zstyle ':completion:complete:*:options' sort false
+
+# fzf-tab: Use input as query string when completing zlua
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+
+# fzf-tab: Some boilerplate code to define the variable `extract` which will be used later
+local extract="
+# trim input(what you select)
+local in=\${\${\"\$(<{f})\"%\$'\0'*}#*\$'\0'}
+# get ctxt for current completion(some thing before or after the current word)
+local -A ctxt=(\"\${(@ps:\2:)CTXT}\")
+# real path
+local realpath=\${ctxt[IPREFIX]}\${ctxt[hpre]}\$in
+realpath=\${(Qe)~realpath}
+"
+
+# fzf-tab: Give a preview of commandline arguments when completing `kill`
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd -w -w"
+zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
+
+# fzf-tab: Give a preview of directory by `exa` when completing `cd`
+zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always $realpath'
 
 # Push current command
 bindkey '^q' push-line-or-edit
