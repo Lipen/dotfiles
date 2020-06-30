@@ -20,6 +20,12 @@ if command -v exa &> /dev/null; then
     alias l='ls --long'
 fi
 
+## lsd aliases
+if command -v lsd &> /dev/null; then
+    alias lsd='lsd --group-dirs first'
+    alias lld='lsd --almost-all --long --classify'
+fi
+
 ## Modified commands
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
