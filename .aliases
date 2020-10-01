@@ -18,12 +18,14 @@ if command -v exa &> /dev/null; then
     alias ls='exa --group-directories-first'
     alias ll='ls --all --long --git --classify --color-scale'
     alias l='ls --long'
+    alias lt='ll --tree'
 fi
 
 ## lsd aliases
 if command -v lsd &> /dev/null; then
     alias lsd='lsd --group-dirs first'
     alias lld='lsd --almost-all --long --classify'
+    alias ltd='lld --tree'
 fi
 
 ## Modified commands
