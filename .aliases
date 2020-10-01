@@ -58,6 +58,7 @@ alias wh='which -a'
 alias q='cd && clr'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias gj='g lg -10'
 
 ## Safety features
 alias cp='cp -i'
