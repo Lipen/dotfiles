@@ -71,7 +71,9 @@ alias chgrp='chgrp --preserve-root'
 
 ## Noice is Not Noice alias
 if command -v nnn &> /dev/null; then
-    alias n='nnn'
+    n() {
+        nnn -edFHQrx
+    }
     alias т='nnn'
 fi
 
