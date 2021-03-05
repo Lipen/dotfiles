@@ -101,9 +101,6 @@ include () {
     [[ -f "$1" ]] && source "$1"
 }
 
-# Source aliases
-include ~/.aliases
-
 # Setup dircolors
 if command -v dircolors &> /dev/null; then
     [[ -f ~/.dir_colors ]] && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
@@ -242,6 +239,27 @@ zstyle ":conda_zsh_completion:*" use-groups true
 
 # Setup thefuck
 eval $(thefuck --alias)
+
+# Setup nnn plugins
+if [ -d "$HOME/.config/nnn/plugins" ]; then
+    export PATH="$PATH:$HOME/.config/nnn/plugins"
+    export NNN_OPENER=nuke
+    export NNN_PLUG='f:finder;z:fzopen;t:treeview;c:fzcd;j:autojump;p:-_less -iR -+F $nnn*'
+fi
+
+# Setup Nix
+if [ -e /home/azuregos/.nix-profile/etc/profile.d/nix.sh ]; then
+    . /home/azuregos/.nix-profile/etc/profile.d/nix.sh
+fi
+
+# Setup home-manager
+if [ -d $HOME/.nix-defexpr/channels ]; then
+    export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+fi
+
+
+# Source aliases (better to do it after all setup)
+include ~/.aliases
 
 # Disable beep
 unsetopt BEEP
