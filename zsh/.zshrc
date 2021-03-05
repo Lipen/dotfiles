@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 ## User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin:$HOME/.poetry/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.cargo/bin
 export MANPATH="/usr/local/man:$MANPATH"
 export LESS="-F -X $LESS"
 export YSU_MESSAGE_POSITION="after"
