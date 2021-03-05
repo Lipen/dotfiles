@@ -94,6 +94,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin:$HOME/.poetry/bin:$H
 export MANPATH="/usr/local/man:$MANPATH"
 export LESS="-F -X $LESS"
 export YSU_MESSAGE_POSITION="after"
+export EDITOR=subl
+export VISUAL=subl
 
 include () {
     [[ -f "$1" ]] && source "$1"
