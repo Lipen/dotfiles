@@ -3,8 +3,9 @@
 with lib;
 let
   cfg = config.profiles.graphical;
-in {
-  options = {
+in
+{
+  options.profiles.graphical = {
     enable = mkEnableOption "Graphical profile";
   };
 

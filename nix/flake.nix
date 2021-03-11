@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nix.url = "github:NixOS/nix";
     home-manager = {
       url = "github:/nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,14 +17,18 @@
 
       system = "x86_64-linux";
 
-      mkPkgs = pkgs:
-        import pkgs {
-          inherit system;
+      pkgs =
+        let
+          # nixOverlay = final: prev: {
+          #   nixUnstable = nix.defaultPackage.${system};
+          # };
+          # overlays = [ nixOverlay ];
+          overlays = [ ];
+        in
+        import nixpkgs {
+          inherit system overlays;
           config.allowUnfree = true;
-          # overlays = inputOverlays ++ selfOverlays ++ extraOverlays;
         };
-
-      pkgs = mkPkgs nixpkgs;
 
       kebabCaseToCamelCase =
         replaceStrings (map (s: "-${s}") lib.lowerChars) lib.upperChars;
@@ -45,48 +50,82 @@
           }))
           listToAttrs
         ];
-    in {
+
+      # homeManagerExtraModules = (attrValues self.homeManagerModules);
+      # homeManagerExtraModules = [ (import ./home-manager/home.nix) ];
+    in
+    {
       nixosModules = importDirToAttrs ./nixos/modules;
 
       # homeManagerModules = importDirToAttrs ./home-manager/modules;
 
-      nixosConfigurations = let
-        hostsDir = ./nixos/hosts;
-        hosts = attrNames (readDir hostsDir);
-        mkHost = host:
-          let
-            baseNixosModule = {
-              system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-              nixpkgs = { inherit pkgs; };
-              nix.nixPath = [
-                # "home-manager=${home-manager}"
-                "nixpkgs=${nixpkgs}"
+      nixosConfigurations =
+        let
+          hostsDir = ./nixos/hosts;
+          hosts = attrNames (readDir hostsDir);
+          mkSystem = host:
+            let
+              baseNixosModule = {
+                system.configurationRevision = lib.mkIf (self ? rev) self.rev;
+                nixpkgs = { inherit pkgs; };
+                nix.nixPath =
+                  [ "home-manager=${home-manager}" "nixpkgs=${nixpkgs}" ];
+                nix.registry.nixpkgs.flake = nixpkgs;
+              };
+              homeNixosModule = {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = "bak";
+                };
+              };
+            in
+            lib.nixosSystem {
+              inherit system;
+              specialArgs = { inherit inputs; };
+
+              modules = [
+                baseNixosModule
+                homeNixosModule
+                { imports = [ (hostsDir + "/${host}") ]; }
               ];
-              nix.registry.nixpkgs.flake = nixpkgs;
+
+              extraModules = [ home-manager.nixosModules.home-manager ]
+                ++ (attrValues self.nixosModules);
             };
-            homeNixosModule = {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "bak";
+        in
+        lib.genAttrs hosts mkSystem;
+
+      homeConfigurations =
+        let
+          mkHome =
+            { username, configuration, homeDirectory ? "/home/${username}" }:
+            home-manager.lib.homeManagerConfiguration {
+              inherit username homeDirectory system pkgs;
+
+              configuration = {
+                imports = [
+                  ./home-manager/home.nix
+                  configuration
+                ];
+                # targets.genericLinux.enable = pkgs.stdenv.hostPlatform.isLinux;
               };
             };
-          in lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-
-            modules = [
-              baseNixosModule
-              homeNixosModule
-              { imports = [ (hostsDir + "/${host}") ]; }
-            ];
-
-            extraModules = [ home-manager.nixosModules.home-manager ]
-              ++ (attrValues self.nixosModules);
+        in
+        {
+          username = mkHome {
+            username = "username";
+            configuration = {
+              # profiles.graphical.enable = true;
+              nixpkgs.config.allowUnfree = true;
+            };
           };
-      in lib.genAttrs hosts mkHost;
+        };
 
-      defaultPackage.x86_64-linux =
-        self.nixosConfigurations.nixbox.config.system.build.toplevel;
+      nixbox = self.nixosConfigurations.nixbox.config.system.build.toplevel;
+
+      hm = self.homeConfigurations.username.activationPackage;
+
+      defaultPackage.x86_64-linux = self.nixbox;
     };
 }

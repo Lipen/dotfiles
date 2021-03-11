@@ -17,7 +17,7 @@
   # safety features
   cp = "cp -i";
   mv = "mv -i";
-  rm = "rm -I";  # 'rm -i' prompts for every file
+  rm = "rm -I"; # 'rm -i' prompts for every file
   ln = "ln -i";
   chown = "chown --preserve-root";
   chmod = "chmod --preserve-root";
@@ -53,8 +53,8 @@
   dusl = "du | sort -rh | less";
 
   # ping
-  ping1="ping 1.1.1.1";
-  ping8="ping 8.8.8.8";
+  ping1 = "ping 1.1.1.1";
+  ping8 = "ping 8.8.8.8";
 
   # clipboard
   pbcopy = "xclip -selection clipboard";

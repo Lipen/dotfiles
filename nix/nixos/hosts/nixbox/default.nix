@@ -6,7 +6,8 @@ let
   username = "username";
   hostname = "nixbox";
 
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
 
