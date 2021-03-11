@@ -32,6 +32,7 @@ in
     exa
     fasd
     fd
+    ffmpeg
     file
     fortune
     gh
@@ -66,7 +67,6 @@ in
     evince
     okular
     # pdfsam-basic
-    ffmpeg
 
     ## WM
     gnome3.gnome-tweaks

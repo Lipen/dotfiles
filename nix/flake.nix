@@ -104,10 +104,7 @@
               inherit username homeDirectory system pkgs;
 
               configuration = {
-                imports = [
-                  ./home-manager/home.nix
-                  configuration
-                ];
+                imports = [ configuration ];
                 # targets.genericLinux.enable = pkgs.stdenv.hostPlatform.isLinux;
               };
             };
@@ -117,15 +114,19 @@
             username = "username";
             configuration = {
               # profiles.graphical.enable = true;
+              imports = [ ./home-manager/home.nix ];
               nixpkgs.config.allowUnfree = true;
             };
           };
         };
 
+      # Main nixosConfigurations
       nixbox = self.nixosConfigurations.nixbox.config.system.build.toplevel;
 
+      # Main homeManagerConfiguration
       hm = self.homeConfigurations.username.activationPackage;
 
+      # Default package for 'nix build .'
       defaultPackage.x86_64-linux = self.nixbox;
     };
 }
