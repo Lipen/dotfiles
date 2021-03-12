@@ -63,6 +63,7 @@
 
       url = {
         "https://github.com/" = { insteadOf = "gh:"; };
+        "ssh://git@github.com/lipen" = { insteadOf = "gh:lipen"; };
       };
 
       ghq = {
