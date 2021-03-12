@@ -28,7 +28,12 @@
       enable = true;
       options = {
         features = "side-by-side line-numbers decorations";
-        syntax-theme = "ansi-light";
+        syntax-theme = "Monokai Extended Bright";
+        decorations = {
+          file-style="bold brightblue ul";
+          file-decoration-style = "none";
+          hunk-header-style = "omit";
+        };
       };
     };
 
@@ -63,7 +68,7 @@
 
       url = {
         "https://github.com/" = { insteadOf = "gh:"; };
-        "ssh://git@github.com/lipen" = { insteadOf = "gh:lipen"; };
+        "ssh://git@github.com/Lipen" = { insteadOf = "gh:lipen"; };
       };
 
       ghq = {
