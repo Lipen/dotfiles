@@ -30,7 +30,7 @@
         features = "side-by-side line-numbers decorations";
         syntax-theme = "Monokai Extended Bright";
         decorations = {
-          file-style="bold brightblue ul";
+          file-style = "bold brightblue ul";
           file-decoration-style = "none";
           hunk-header-style = "omit";
         };
