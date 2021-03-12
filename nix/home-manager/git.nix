@@ -26,6 +26,10 @@
 
     delta = {
       enable = true;
+      options = {
+        features = "side-by-side line-numbers decorations";
+        syntax-theme = "ansi-light";
+      };
     };
 
     extraConfig = {
