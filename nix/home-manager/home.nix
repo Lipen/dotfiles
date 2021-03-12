@@ -13,6 +13,7 @@ let
 in
 {
   imports = [
+    ./git.nix
     ./zsh.nix
   ];
 
@@ -35,7 +36,6 @@ in
     ffmpeg
     file
     fortune
-    gh
     htop
     iotop
     jq
@@ -114,9 +114,19 @@ in
   # home-manager
   programs.home-manager.enable = true;
 
-  # Git
-  programs.git = {
+  # XDG
+  xdg = {
     enable = true;
+    # mimeApps = {
+    #   enable = true;
+    #   associations.added = {
+    #     "text/plain" = "sublime_text.desktop;org.gnome.gedit.desktop";
+    #     "application/pdf" = "okularApplication_pdf.desktop";
+    #   };
+    #   defaultAppications = {
+    #     "text/html"="firefox.desktop";
+    #   };
+    # };
   };
 
   # Gpg

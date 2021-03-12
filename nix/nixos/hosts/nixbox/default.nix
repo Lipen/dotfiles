@@ -76,11 +76,11 @@ in
   # Setup GNOME.
   services.xserver = {
     enable = true;
-    desktopManager.gnome3 = { enable = true; };
     displayManager = {
       gdm.enable = true;
-      # autoLogin.enable = true;
-      # autoLogin.user = username;
+    };
+    desktopManager = {
+      gnome3.enable = true;
     };
   };
 

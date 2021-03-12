@@ -8,6 +8,8 @@
     history.size = 50000;
     history.save = 50000;
 
+    dotDir = ".config/zsh";
+
     initExtraFirst = builtins.readFile ./init-extra-first.zsh;
     initExtra = builtins.readFile ./init-extra.zsh;
 
@@ -158,6 +160,7 @@
   };
 
   home.file.".p10k.zsh".source = ./p10k.zsh;
+  xdg.configFile."zsh/.p10k.zsh".source = ./p10k.zsh;
 
   programs.fzf = {
     enable = true;
