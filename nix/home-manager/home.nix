@@ -14,6 +14,7 @@ in
 {
   imports = [
     ./git.nix
+    ./firefox.nix
     ./zsh.nix
   ];
 

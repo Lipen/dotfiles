@@ -8,9 +8,10 @@
       url = "github:/nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
     with builtins;
     let
       inherit (nixpkgs) lib;
@@ -22,8 +23,7 @@
           # nixOverlay = final: prev: {
           #   nixUnstable = nix.defaultPackage.${system};
           # };
-          # overlays = [ nixOverlay ];
-          overlays = [ ];
+          overlays = [ nur.overlay ];
         in
         import nixpkgs {
           inherit system overlays;
@@ -85,13 +85,13 @@
               specialArgs = { inherit inputs; };
 
               modules = [
+                (import (hostsDir + "/${host}"))
                 baseNixosModule
                 homeNixosModule
-                { imports = [ (hostsDir + "/${host}") ]; }
+                home-manager.nixosModules.home-manager
               ];
 
-              extraModules = [ home-manager.nixosModules.home-manager ]
-                ++ (attrValues self.nixosModules);
+              extraModules = (attrValues self.nixosModules);
             };
         in
         lib.genAttrs hosts mkSystem;
@@ -102,6 +102,10 @@
             { username, configuration, homeDirectory ? "/home/${username}" }:
             home-manager.lib.homeManagerConfiguration {
               inherit username homeDirectory system pkgs;
+
+              # Without mysterious "extraSpecialArgs",
+              #  'pkgs' are not being correctly passed to home-manager.
+              extraSpecialArgs = { inherit pkgs; };
 
               configuration = {
                 imports = [ configuration ];
@@ -115,7 +119,7 @@
             configuration = {
               # profiles.graphical.enable = true;
               imports = [ ./home-manager/home.nix ];
-              nixpkgs.config.allowUnfree = true;
+              # nixpkgs.config.allowUnfree = true;
             };
           };
         };
