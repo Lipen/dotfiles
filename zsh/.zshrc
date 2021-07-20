@@ -249,7 +249,7 @@ eval $(thefuck --alias)
 # Setup nnn plugins
 if [ -d "$HOME/.config/nnn/plugins" ]; then
     export PATH="$PATH:$HOME/.config/nnn/plugins"
-    export NNN_OPENER=nuke
+    # export NNN_OPENER=nuke
     export NNN_PLUG='f:finder;z:fzopen;t:treeview;c:fzcd;j:autojump;p:-_less -iR -+F $nnn*'
 fi
 
