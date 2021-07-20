@@ -40,7 +40,7 @@
 		"Erlang",
 		"Markdown",
 		"TCL",
-		"Vintage"
+		"Vintage",
 	],
 	"indent_guide_options":
 	[
@@ -82,5 +82,5 @@
 	"trim_trailing_white_space_on_save": true,
 	"wide_caret": true,
 	"word_wrap": false,
-	"wrap_width": 100
+	"wrap_width": 100,
 }
