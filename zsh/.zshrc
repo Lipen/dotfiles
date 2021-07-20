@@ -78,6 +78,7 @@ plugins=(
     github
     history
     man
+    nix-shell
     poetry
     sudo
     virtualenv
@@ -258,9 +259,9 @@ if [ -e /home/azuregos/.nix-profile/etc/profile.d/nix.sh ]; then
 fi
 
 # Setup home-manager
-if [ -d $HOME/.nix-defexpr/channels ]; then
-    export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-fi
+# if [ -d $HOME/.nix-defexpr/channels ]; then
+#     export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+# fi
 
 
 # Source aliases (better to do it after all setup)
