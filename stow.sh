@@ -12,6 +12,7 @@ base=(
 useronly=(
     bin
     conda
+    direnv
     git
     gnupg
     htop
