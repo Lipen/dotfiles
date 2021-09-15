@@ -1,0 +1,7 @@
+# Download at most 1080p video if possible
+-f 'bestvideo[height<=1080]+bestaudio/best[height<=1080]'
+
+# Do not copy the mtime
+--no-mtime
+
+-o %(title)s.%(ext)s
