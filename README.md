@@ -2,7 +2,7 @@
 
 > Managed by [chezmoi](https://github.com/twpayne/chezmoi).
 
-Previous version of dotfiles (managed by [GNU Stow](https://www.gnu.org/software/stow/)) can be found in [old/]() folder.
+Previous version of dotfiles (managed by [GNU Stow](https://www.gnu.org/software/stow/)) can be found in the folder [old](old).
 
 ---
 
