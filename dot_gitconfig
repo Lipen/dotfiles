@@ -21,6 +21,8 @@
     ignoredHook = false
 [tag]
     forceSignAnnotated = true
+[merge]
+    conflictstyle = diff3
 
 [color]
     ui = true
