@@ -73,4 +73,9 @@
             "extend": true
         }
     },
+    {
+        "keys": ["ctrl+f1"],
+        "command": "show_panel",
+        "args": {"panel": "console", "toggle": true}
+    },
 ]
