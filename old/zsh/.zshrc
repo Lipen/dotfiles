@@ -69,6 +69,7 @@ plugins=(
     copydir
     copyfile
     cp
+    direnv
     fasd
     fzf
     fzf-fasd
@@ -80,13 +81,14 @@ plugins=(
     man
     nix-shell
     poetry
+    rust
     sudo
     virtualenv
     you-should-use
     # zsh-autocomplete
     zsh-completions
     zsh-interactive-cd
-    zsh_reload
+    # zsh_reload
     # some say that these two must be last
     fast-syntax-highlighting
     zsh-autosuggestions
@@ -235,13 +237,12 @@ zstyle ":conda_zsh_completion:*" use-groups true
 # zstyle ':autocomplete:tab:*' completion 'select'
 # zstyle ':autocomplete:(slash|space):*' magic 'off'
 
-# # Setup pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#     eval "$(pyenv init -)"
-#     eval "$(pyenv virtualenv-init -)"
-# fi
+# Setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
 
 # Setup thefuck
 eval $(thefuck --alias)
