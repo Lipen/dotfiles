@@ -79,7 +79,7 @@ plugins=(
     github
     history
     man
-    nix-shell
+    # nix-shell
     poetry
     rust
     sudo
@@ -255,9 +255,9 @@ if [ -d "$HOME/.config/nnn/plugins" ]; then
 fi
 
 # Setup Nix
-if [ -e /home/azuregos/.nix-profile/etc/profile.d/nix.sh ]; then
-    . /home/azuregos/.nix-profile/etc/profile.d/nix.sh
-fi
+# if [ -e /home/azuregos/.nix-profile/etc/profile.d/nix.sh ]; then
+#     . /home/azuregos/.nix-profile/etc/profile.d/nix.sh
+# fi
 
 # Setup home-manager
 # if [ -d $HOME/.nix-defexpr/channels ]; then
