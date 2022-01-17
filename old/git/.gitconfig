@@ -43,3 +43,5 @@
     untracked = cyan
 [rebase]
 	autostash = true
+[init]
+	defaultBranch = master
