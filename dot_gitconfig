@@ -9,6 +9,7 @@
     defaultBranch = master
 [commit]
     gpgsign = true
+    verbose = true
 [pull]
     rebase = true
 [push]
